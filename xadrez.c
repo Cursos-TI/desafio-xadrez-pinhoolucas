@@ -1,56 +1,69 @@
-/*
-Desafio Nivel Novato Xadrez
-
-O Objetivo aqui é imprimir a trajetória das peças
-sem uma lógica profunda no código
-
-Torre: 5 x Direita
-Bispo: 5x Cima, Direita 
-Rainha: 8x Esquerda
-Cavalo: 2x Baixo, 1 Esquerda
-
-Commit: Implementando a movimentação do cavalo
-*/
-
 #include <stdio.h>
+
+//Movimentação da Torre -> 5x Direita!
+void mov_torre(int torre){
+    if(torre>0){
+        printf("\nTorre -> Direita!"); 
+        mov_torre(torre - 1);
+    }
+}
+
+
+//Movimentação do Bispo -> 5x Cima, Direita!
+void mov_bispo(int bispo){
+    
+    if(bispo>0){
+    
+        for(int i=0; i<1; i++){
+            printf("\nBispo -> Cima, ");
+            for(int j=0; j<1; j++){
+             printf("Direita!");
+            }
+    }
+     mov_bispo(bispo - 1);
+    }
+}
+
+
+//Movimentação da Rainha -> 8x Esquerda
+void mov_rainha(int rainha){
+    
+    if(rainha>0){
+        printf("\nRainha -> Esquerda!");
+        mov_rainha(rainha - 1);
+    }
+    
+}
 
 int main(){
 
-    int bispo=1, rainha=1, cavalo=1;
-
-
-    //Movimentação da Torre 5x Direita
-    for(int i=1; i<=5; i++){
-        printf("\nTorre -> Direita!");
-    }    
-    printf("\n");
-
-
-    //Movimentação do Bispo 5x Cima, Direita
-    do{
-        printf("\nBispo -> Cima, Direita!");
-        bispo++;
-    } while(bispo<=5);    
-    printf("\n");
-
-
-    //Movimentação da Rainha 8x Esquerda
-    while(rainha<=8){
-        printf("\nRainha -> Esquerda!");
-        rainha++;
-    }
-    printf("\n");
-
+    int cavalo=1;
     
-    //Movimentação do Cavalo 2x Baixo + 1 Esquerda
-    for(cavalo=1; cavalo<=2; cavalo++){
-        
-        while(cavalo<=2){
-            printf("\nCavalo -> Baixo!");
-            cavalo++;
-        }
-        printf("\nCavalo -> Esquerda!");
-    }
+    //chama função que movimenta a torre
+    mov_torre(5);
+    
+    printf("\n");
+    
+    //chama função que movimenta o bispo
+    mov_bispo(5);
 
+    printf("\n");
+    
+    //chama função que movimenta a rainha
+    mov_rainha(8);
+    
+    printf("\n\n");
+    
+    //Movimentação do cavalo 2x Cima e 1x Direita
+    for(cavalo=1; cavalo<=3; cavalo++){
+        
+        if(cavalo%3==0){
+            printf("Cavalo -> Direita!");
+        } else{
+            printf("Cavalo -> Cima!\n");
+        }
+    }
+    
+   
     return 0;
 }
